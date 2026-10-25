@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Артур — Профессиональная укладка плитки в Ялте и на ЮБК</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body id="body">
+
+  <header>
+    <div class="admin-badge" onclick="toggleAdminPrompt()">
+      <i class="fa-solid fa-gear"></i> <span id="adminBtnText">Управление</span>
+    </div>
+    <h1>Мастер-плиточник <span>Артур</span></h1>
+    <p>Профессиональная укладка плитки, устройство душевых поддонов, монтаж инсталляций и коробов из ГКЛ в Ялте и на ЮБК.</p>
+    
+    <div class="badges-row">
+      <div class="badge"><i class="fa-solid fa-ruler-combined"></i> Формат до 1.20 × 0.60 м</div>
+      <div class="badge"><i class="fa-solid fa-location-dot"></i> Выезд до 20 км</div>
+      <div class="badge"><i class="fa-solid fa-shield-halved"></i> Высокое качество</div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Услуги и специализация -->
+    <div class="section">
+      <h2 class="section-title"><i class="fa-solid fa-hammer"></i> Мои услуги</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3><i class="fa-solid fa-grip"></i> Укладка плитки</h3>
+          <p>Форматы до 1.20 × 0.60 м. Идеальная геометрия, запил углов под 45°, работа с крупным форматом.</p>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-droplet"></i> Затирка швов</h3>
+          <p>Профессиональное нанесение цементной и эпоксидной затирки для долговечности и красоты.</p>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-bath"></i> Душевые поддоны и трапы</h3>
+          <p>Сборка надежных душевых поддонов из плитки своими руками, точный монтаж трапов и скрытых смесителей.</p>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-cube"></i> Инсталляции и ГКЛ</h3>
+          <p>Надежная установка скрытых инсталляций, сборка коробов и выравнивание оснований под облицовку.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Галерея -->
+    <div class="section">
+      <h2 class="section-title"><i class="fa-solid fa-images"></i> Примеры работ</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <i class="fa-solid fa-image"></i>
+          <span>Санузел 120х60</span>
+        </div>
+        <div class="gallery-item">
+          <i class="fa-solid fa-image"></i>
+          <span>Душевой поддон</span>
+        </div>
+        <div class="gallery-item">
+          <i class="fa-solid fa-image"></i>
+          <span>Запил 45 градусов</span>
+        </div>
+        <div class="gallery-item">
+          <i class="fa-solid fa-image"></i>
+          <span>Короб из ГКЛ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Отзывы -->
+    <div class="section">
+      <h2 class="section-title"><i class="fa-solid fa-comments"></i> Отзывы клиентов</h2>
+      <div id="reviewsContainer">
+        <!-- Динамические отзывы -->
+      </div>
+
+      <!-- Форма добавления отзыва -->
+      <div class="review-form">
+        <h3 style="font-size: 1.05rem; margin-bottom: 12px; color: #fff;"><i class="fa-solid fa-pen-nib"></i> Оставить отзыв</h3>
+        <form id="addReviewForm" onsubmit="handleReviewSubmit(event)">
+          <div class="form-group">
+            <label>Ваше имя</label>
+            <input type="text" id="reviewerName" class="form-control" placeholder="Например, Алексей" required>
+          </div>
+          <div class="form-group">
+            <label>Ваш отзыв</label>
+            <textarea id="reviewerText" class="form-control" placeholder="Опишите впечатления от работы..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Отправить отзыв</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Фиксированные контакты -->
+  <div class="sticky-contact">
+    <a href="tel:+79780000000" class="btn-contact btn-call"><i class="fa-solid fa-phone"></i> Позвонить</a>
+    <a href="https://wa.me/79780000000" target="_blank" class="btn-contact btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+    <a href="https://t.me/your_username" target="_blank" class="btn-contact btn-tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
+  </div>
+
+  <!-- Модальное окно админа -->
+  <div class="modal" id="adminModal">
+    <div class="modal-content">
+      <h3 style="margin-bottom: 10px; color: #fff;">Режим управления</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Введите пин-код (по умолчанию: 1234) для удаления отзывов.</p>
+      <div class="form-group">
+        <input type="password" id="adminPin" class="form-control" placeholder="Пин-код">
+      </div>
+      <button onclick="checkAdmin()" class="btn-submit" style="margin-bottom: 8px;">Войти</button>
+      <button onclick="closeModal()" class="form-control" style="background: transparent; border: 1px solid var(--border); cursor: pointer;">Отмена</button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
